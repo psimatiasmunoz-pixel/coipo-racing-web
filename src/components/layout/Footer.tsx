@@ -1,86 +1,59 @@
-import Link from "next/link";
+import { Globe, Mail, Phone } from "lucide-react";
 import Image from "next/image";
-import { buildWhatsAppUrl, buildGeneralMessage } from "@/lib/whatsapp";
+import Link from "next/link";
 
 export function Footer() {
-  const whatsappUrl = buildWhatsAppUrl(buildGeneralMessage());
-
   return (
-    <footer className="border-t border-white/10 bg-zinc-950">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Marca */}
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="relative h-12 w-12 overflow-hidden rounded-full">
-                <Image src="/logo.png" alt="Coipo Racing" fill className="object-cover" />
-              </div>
-              <div>
-                <span className="block text-base font-extrabold tracking-widest text-white uppercase">Coipo Racing</span>
-                <span className="block text-xs font-medium text-red-500 uppercase tracking-widest">Suplementos Deportivos</span>
-              </div>
-            </div>
-            <p className="text-sm text-zinc-400 max-w-xs leading-relaxed">
-              Suplementación deportiva, hidratación y energía para mejorar tu rendimiento antes, durante y después del entrenamiento.
+    <footer className="bg-brand-black pt-20 border-t border-white/5">
+      <div className="container mx-auto px-4 pb-12">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
+          <div className="col-span-1 md:col-span-2">
+            <Image src="/logo.png" alt="Coipo Racing" width={150} height={150} />
+            <p className="mt-6 max-w-sm text-zinc-500 leading-relaxed">
+              Líderes en suplementación deportiva de alta calidad. 
+              Comprometidos con tu rendimiento y metas personales.
             </p>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-4 rounded-full bg-green-600/20 border border-green-600/30 hover:bg-green-600/30 px-4 py-2 text-sm font-semibold text-green-400 transition"
-            >
-              +56 9 6596 7077
-            </a>
           </div>
-
-          {/* Catálogo */}
+          
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Catálogo</h3>
-            <ul className="space-y-2">
-              {[
-                { href: "/categorias/proteinas", label: "Proteínas" },
-                { href: "/categorias/creatinas", label: "Creatinas" },
-                { href: "/categorias/hidratacion", label: "Hidratación" },
-                { href: "/categorias/energia", label: "Energía" },
-                { href: "/categorias/accesorios", label: "Accesorios" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-zinc-400 hover:text-white transition">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-sm font-black uppercase tracking-widest text-white">Navegación</h4>
+            <ul className="mt-6 space-y-3 text-sm text-zinc-500">
+              <li><Link href="/" className="hover:text-brand-red transition">Inicio</Link></li>
+              <li><Link href="/catalogo" className="hover:text-brand-red transition">Catálogo</Link></li>
+              <li><Link href="/contacto" className="hover:text-brand-red transition">Contacto</Link></li>
             </ul>
           </div>
 
-          {/* Info */}
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Información</h3>
-            <ul className="space-y-2">
-              {[
-                { href: "/catalogo", label: "Ver catálogo completo" },
-                { href: "/contacto", label: "Contacto" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-zinc-400 hover:text-white transition">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-sm font-black uppercase tracking-widest text-white">Legal</h4>
+            <ul className="mt-6 space-y-3 text-sm text-zinc-500">
+              <li><a href="#" className="hover:text-brand-red transition">Términos y condiciones</a></li>
+              <li><a href="#" className="hover:text-brand-red transition">Políticas de privacidad</a></li>
             </ul>
           </div>
         </div>
+      </div>
 
-        <hr className="divider-red my-8" />
-
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-zinc-600">
-            © {new Date().getFullYear()} Coipo Racing. Todos los derechos reservados.
-          </p>
-          <p className="text-xs text-zinc-600">
-            Hecho con ❤️ para atletas de alto rendimiento 🏁
-          </p>
+      {/* Bottom Bar matching the commercial proposal image */}
+      <div className="bg-gradient-to-r from-brand-black via-brand-red/90 to-brand-black py-4">
+        <div className="container mx-auto px-4 flex flex-wrap items-center justify-center gap-8 text-xs font-bold text-white uppercase tracking-widest">
+          <div className="flex items-center gap-2">
+            <Globe size={14} className="text-white/70" />
+            <span>www.coiporacing.com</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Mail size={14} className="text-white/70" />
+            <span>info@coiporacing.com</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Phone size={14} className="text-white/70" />
+            <span>+56 9 6655 9988</span>
+          </div>
         </div>
+      </div>
+      
+      <div className="bg-black py-4 text-center text-[10px] text-zinc-600 uppercase tracking-widest">
+        &copy; {new Date().getFullYear()} Coipo Racing. Todos los derechos reservados.
       </div>
     </footer>
   );

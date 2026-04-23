@@ -7,7 +7,7 @@ interface FeaturedProductsProps {
 }
 
 export function FeaturedProducts({ products }: FeaturedProductsProps) {
-  if (products.length === 0) return null;
+  if (!products || products.length === 0) return null;
 
   return (
     <section className="py-20 bg-zinc-950">

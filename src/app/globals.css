@@ -2,13 +2,15 @@
 
 :root {
   --font-inter: "Inter", sans-serif;
-  --color-brand-red: #dc2626;
-  --color-brand-red-dark: #991b1b;
-  --color-brand-accent: #f59e0b;
+  --color-brand-red: #be1e2d;
+  --color-brand-red-dark: #8b151e;
+  --color-brand-black: #0a0a0a;
 }
 
-* {
-  box-sizing: border-box;
+body {
+  background-color: var(--color-brand-black);
+  color: #ffffff;
+  font-family: var(--font-inter);
 }
 
 /* Scrollbar personalizado */
@@ -16,53 +18,66 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #dc2626;
+  background: #be1e2d;
   border-radius: 3px;
 }
 
-/* Gradiente de texto */
-.text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #dc2626 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Utility Classes */
+.text-brand-red {
+  color: var(--color-brand-red);
 }
 
-/* Glassmorphism */
+.bg-brand-red {
+  background-color: var(--color-brand-red);
+}
+
+.bg-brand-black {
+  background-color: var(--color-brand-black);
+}
+
+/* Premium Sections */
+.section-white {
+  background-color: #ffffff;
+  color: #0a0a0a;
+}
+
 .glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-shadow {
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
 }
 
 /* Animaciones */
-@keyframes pulse-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 3s ease-in-out infinite;
+/* Botones estilo Coipo */
+.btn-primary {
+  background-color: var(--color-brand-red);
+  color: white;
+  font-weight: 800;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* Línea divisora roja */
-.divider-red {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #dc2626, transparent);
-  border: none;
+.btn-primary:hover {
+  background-color: var(--color-brand-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(190, 30, 45, 0.4);
 }
